@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frontend</title>
+</head>
+<body>
+    <h1>Frontend</h1>
+    <button onclick="fetchServer('A')">Connect to Backend 1</button>
+    <button onclick="fetchServer('B')">Connect to Backend 2</button>
+
+    <p id="response"></p>
+
+    <script>
+        function fetchServer(server) {
+            fetch('/', { headers: { 'Server': server } })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').innerText = JSON.stringify(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
